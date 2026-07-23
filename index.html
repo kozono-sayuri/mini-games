@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sayuri's Mini Games，為忙碌日常準備的輕量小遊戲館。"
+    />
+    <meta name="theme-color" content="#17182b" />
+    <title>Sayuri's Mini Games</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#/" aria-label="Sayuri's Mini Games 首頁">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Sayuri's Mini Games</span>
+      </a>
+      <nav class="header-actions" aria-label="主要導覽">
+        <a class="nav-link" href="#/">遊戲館</a>
+        <a
+          class="nav-link nav-link-soft"
+          href="https://kozono-sayuri.github.io/"
+        >
+          返回小宇宙
+        </a>
+      </nav>
+    </header>
+
+    <main id="app" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <p>Made with curiosity, tiny breaks, and AI collaboration.</p>
+      <p>© <span id="current-year"></span> Kozono Sayuri</p>
+    </footer>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
