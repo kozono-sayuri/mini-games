@@ -1,5 +1,6 @@
 import { games } from "./games.js";
 import { renderMinesweeper } from "./minesweeper.js";
+import { renderReversi } from "./reversi.js";
 
 const app = document.querySelector("#app");
 document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -93,6 +94,14 @@ function route() {
     document.body.dataset.scene = "minesweeper";
     document.title = "踩地雷｜Sayuri's Mini Games";
     renderMinesweeper(app);
+    app.focus({ preventScroll: true });
+    return;
+  }
+
+  if (path === "/games/reversi") {
+    document.body.dataset.scene = "reversi";
+    document.title = "黑白棋 AI｜Sayuri's Mini Games";
+    renderReversi(app);
     app.focus({ preventScroll: true });
     return;
   }

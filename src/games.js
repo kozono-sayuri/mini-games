@@ -36,7 +36,7 @@ export const games = [
     description: "接受天才策士諾瓦的邀請，在黑與白的茶會中與 AI 對弈。",
     category: "棋類",
     duration: "5–10 分鐘",
-    status: "coming-soon",
+    status: "available",
   },
   {
     id: "solitaire",
