@@ -3,6 +3,8 @@ import { renderMinesweeper } from "./minesweeper.js";
 import { renderReversi } from "./reversi.js";
 import { renderTetris } from "./tetris.js";
 import { renderSnake } from "./snake.js";
+import { renderSolitaire } from "./solitaire.js";
+import { renderGo } from "./go.js";
 
 const app = document.querySelector("#app");
 document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -64,11 +66,11 @@ function renderHome() {
         </div>
         <div class="cosmic-orbit orbit-three">
           <span class="cosmic-planet planet-c portrait-2" title="諾瓦・布蘭雪"></span>
-          <span class="cosmic-planet planet-d portrait-3" title="路西安・德・凡爾賽"></span>
+          <a class="cosmic-planet planet-d portrait-3" href="#/games/solitaire" aria-label="前往路西安的接龍篇章"></a>
         </div>
         <div class="cosmic-orbit orbit-four">
           <a class="cosmic-planet planet-e portrait-4" href="#/games/tetris" aria-label="前往薇奧拉的方塊挑戰篇章"></a>
-          <span class="cosmic-planet planet-f portrait-5" title="沈月衡"></span>
+          <a class="cosmic-planet planet-f portrait-5" href="#/games/go" aria-label="前往沈月衡的圍棋篇章"></a>
         </div>
       </div>
     </section>
@@ -112,6 +114,22 @@ function route() {
     document.body.dataset.scene = "snake";
     document.title = "貪吃蛇｜Sayuri's Mini Games";
     renderSnake(app);
+    app.focus({ preventScroll: true });
+    return;
+  }
+
+  if (path === "/games/solitaire") {
+    document.body.dataset.scene = "solitaire";
+    document.title = "接龍｜Sayuri's Mini Games";
+    renderSolitaire(app);
+    app.focus({ preventScroll: true });
+    return;
+  }
+
+  if (path === "/games/go") {
+    document.body.dataset.scene = "go";
+    document.title = "9×9 圍棋 AI｜Sayuri's Mini Games";
+    renderGo(app);
     app.focus({ preventScroll: true });
     return;
   }

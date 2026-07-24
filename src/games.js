@@ -49,7 +49,7 @@ export const games = [
     description: "整理王子的魔法牌組，讓錯置的命運重新回到正軌。",
     category: "紙牌",
     duration: "5–15 分鐘",
-    status: "coming-soon",
+    status: "available",
   },
   {
     id: "tetris",
@@ -72,9 +72,9 @@ export const games = [
     role: "隱居竹庭的弈棋公子",
     quote: "「棋盤方寸之間，足以容下整片星空。」",
     portrait: 5,
-    description: "在月下竹庭與月衡公子對局，於十九路星河之外尋找勝機。",
+    description: "在月下竹庭與月衡公子對局，於九路星河之間尋找勝機。",
     category: "棋類",
     duration: "8–15 分鐘",
-    status: "coming-soon",
+    status: "available",
   },
 ];
