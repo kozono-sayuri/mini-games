@@ -52,18 +52,29 @@ body::before {
 }
 
 body[data-scene="minesweeper"]::before {
-  opacity: 0.78;
-  background-image:
-    linear-gradient(90deg, rgba(13, 7, 19, 0.42), rgba(18, 8, 21, 0.66) 50%, rgba(13, 7, 19, 0.42)),
-    url("./assets/minesweeper-palace-v2.png");
+  display: none;
 }
 
 body[data-scene="minesweeper"] {
-  background: #130913;
+  background-color: #130913;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(13, 7, 19, 0.2),
+      rgba(18, 8, 21, 0.58) 38%,
+      rgba(18, 8, 21, 0.64) 62%,
+      rgba(13, 7, 19, 0.2)
+    ),
+    linear-gradient(180deg, rgba(10, 4, 14, 0.14), rgba(10, 4, 14, 0.42)),
+    url("./assets/minesweeper-palace-v2.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body[data-scene="minesweeper"] .ambient {
-  opacity: 0.08;
+  opacity: 0;
 }
 
 body[data-scene="minesweeper"] .site-header {
@@ -72,6 +83,18 @@ body[data-scene="minesweeper"] .site-header {
   border-top: 0;
   background: rgba(20, 9, 22, 0.76);
   backdrop-filter: blur(16px);
+}
+
+body[data-scene="minesweeper"] #app {
+  width: min(1380px, calc(100% - 40px));
+}
+
+body[data-scene="minesweeper"] .site-footer {
+  padding-inline: 20px;
+  border: 1px solid rgba(232, 197, 130, 0.18);
+  border-bottom: 0;
+  background: rgba(20, 9, 22, 0.7);
+  backdrop-filter: blur(14px);
 }
 
 button,
@@ -612,7 +635,7 @@ a {
 }
 
 .game-shell {
-  max-width: 920px;
+  max-width: 1120px;
   margin-inline: auto;
 }
 
@@ -636,9 +659,10 @@ a {
   padding: clamp(20px, 4vw, 42px);
   border: 1px solid var(--line);
   border-radius: 8px 32px 8px 32px;
-  background: rgba(25, 13, 30, 0.88);
+  background:
+    linear-gradient(135deg, rgba(31, 14, 31, 0.82), rgba(20, 12, 29, 0.72));
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(10px) saturate(1.12);
 }
 
 .game-character-banner {
@@ -832,8 +856,8 @@ a {
   border: 1px solid var(--line);
   border-radius: 20px;
   line-height: 1.75;
-  background: rgba(25, 13, 30, 0.82);
-  backdrop-filter: blur(16px);
+  background: rgba(25, 13, 30, 0.68);
+  backdrop-filter: blur(10px);
 }
 
 .rules h2 {
