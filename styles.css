@@ -156,6 +156,208 @@ body[data-scene="reversi"] .rules {
   backdrop-filter: blur(5px);
 }
 
+body[data-scene="tetris"] {
+  background-color: #10070e;
+  background-image:
+    linear-gradient(90deg, rgba(10, 4, 9, 0.14), rgba(18, 7, 20, 0.6) 36%, rgba(18, 7, 20, 0.66) 64%, rgba(10, 4, 9, 0.14)),
+    linear-gradient(180deg, rgba(9, 3, 10, 0.05), rgba(9, 3, 10, 0.42)),
+    url("./assets/tetris-workshop.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body[data-scene="tetris"] .ambient {
+  opacity: 0;
+}
+
+body[data-scene="tetris"] .site-header,
+body[data-scene="tetris"] .site-footer {
+  padding-inline: 22px;
+  border-color: rgba(232, 197, 130, 0.24);
+  background: rgba(18, 7, 17, 0.7);
+  backdrop-filter: blur(14px);
+}
+
+body[data-scene="tetris"] #app {
+  width: min(1320px, calc(100% - 40px));
+}
+
+body[data-scene="tetris"] .game-panel {
+  background: linear-gradient(135deg, rgba(35, 11, 28, 0.68), rgba(18, 9, 27, 0.54));
+  backdrop-filter: blur(5px) saturate(1.05);
+}
+
+body[data-scene="tetris"] .rules {
+  background: rgba(25, 9, 22, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+.block-character-banner {
+  background: linear-gradient(90deg, rgba(129, 28, 66, 0.55), rgba(91, 47, 111, 0.22));
+}
+
+.block-title-row {
+  align-items: end;
+}
+
+.block-scoreboard {
+  grid-template-columns: repeat(4, minmax(76px, 1fr));
+}
+
+.block-game-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 330px) minmax(150px, 190px);
+  gap: 28px;
+  justify-content: center;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.block-board-frame {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 330px);
+  margin-inline: auto;
+  border: 1px solid rgba(232, 197, 130, 0.42);
+  border-radius: 18px;
+  background: rgba(6, 4, 14, 0.88);
+  box-shadow:
+    0 0 0 6px rgba(89, 36, 82, 0.25),
+    0 24px 55px rgba(0, 0, 0, 0.4),
+    inset 0 0 24px rgba(201, 137, 255, 0.11);
+}
+
+#block-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 2;
+}
+
+.block-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px;
+  text-align: center;
+  background: rgba(8, 5, 18, 0.72);
+  backdrop-filter: blur(4px);
+  transition: opacity 180ms ease;
+}
+
+.block-overlay strong {
+  color: var(--gold);
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.block-overlay span {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.block-overlay.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.block-side {
+  display: grid;
+  gap: 14px;
+}
+
+.next-piece {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  border: 1px solid rgba(232, 197, 130, 0.25);
+  border-radius: 18px;
+  background: rgba(16, 8, 24, 0.68);
+}
+
+.next-piece > span {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+#block-next {
+  width: 120px;
+  height: 120px;
+}
+
+.block-status {
+  min-height: 2.8em;
+  margin: 4px 0 0;
+  color: #ead7e4;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.block-mobile-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(54px, 86px));
+  gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.block-mobile-controls button {
+  min-height: 48px;
+  border: 1px solid rgba(232, 197, 130, 0.26);
+  border-radius: 14px;
+  color: var(--ink);
+  font-weight: 800;
+  background: rgba(53, 25, 61, 0.78);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.block-mobile-controls button:hover,
+.block-mobile-controls button:focus-visible {
+  border-color: var(--gold);
+  background: rgba(112, 43, 82, 0.85);
+}
+
+.block-mobile-controls .wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 720px) {
+  .block-scoreboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .block-game-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .block-side {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .next-piece {
+    grid-row: span 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .block-overlay {
+    transition: none;
+  }
+}
+
 button,
 a {
   font: inherit;

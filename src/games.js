@@ -62,7 +62,7 @@ export const games = [
     description: "協助發明家薇奧拉排列魔晶，在工房失控以前完成實驗。",
     category: "街機",
     duration: "3–10 分鐘",
-    status: "coming-soon",
+    status: "available",
   },
   {
     id: "go",

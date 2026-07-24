@@ -1,6 +1,7 @@
 import { games } from "./games.js";
 import { renderMinesweeper } from "./minesweeper.js";
 import { renderReversi } from "./reversi.js";
+import { renderTetris } from "./tetris.js";
 
 const app = document.querySelector("#app");
 document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -65,7 +66,7 @@ function renderHome() {
           <span class="cosmic-planet planet-d portrait-3" title="路西安・德・凡爾賽"></span>
         </div>
         <div class="cosmic-orbit orbit-four">
-          <span class="cosmic-planet planet-e portrait-4" title="薇奧拉・齒輪心"></span>
+          <a class="cosmic-planet planet-e portrait-4" href="#/games/tetris" aria-label="前往薇奧拉的方塊挑戰篇章"></a>
           <span class="cosmic-planet planet-f portrait-5" title="沈月衡"></span>
         </div>
       </div>
@@ -102,6 +103,14 @@ function route() {
     document.body.dataset.scene = "reversi";
     document.title = "黑白棋 AI｜Sayuri's Mini Games";
     renderReversi(app);
+    app.focus({ preventScroll: true });
+    return;
+  }
+
+  if (path === "/games/tetris") {
+    document.body.dataset.scene = "tetris";
+    document.title = "方塊挑戰｜Sayuri's Mini Games";
+    renderTetris(app);
     app.focus({ preventScroll: true });
     return;
   }
