@@ -10,10 +10,19 @@ export function renderMinesweeper(root) {
         <a class="back-link" href="#/">← 返回遊戲館</a>
       </div>
       <div class="game-panel">
+        <div class="game-character-banner">
+          <div class="game-character-art portrait-0" role="img" aria-label="奧蕾莉亞・羅瑟"></div>
+          <div>
+            <span>薔薇王國近衛軍官</span>
+            <strong>奧蕾莉亞・羅瑟</strong>
+            <q>真正的勇氣，是在未知中仍優雅前行。</q>
+          </div>
+        </div>
         <div class="game-title-row">
           <div>
-            <h1>💣 踩地雷</h1>
-            <p>第一步永遠安全，放心開始。</p>
+            <span class="chapter-label">CHAPTER I · 薔薇戰線的秘密</span>
+            <h1>踩地雷</h1>
+            <p>替奧蕾莉亞排除花園中的危險。第一步永遠安全。</p>
           </div>
           <div class="scoreboard" aria-label="遊戲資訊">
             <div class="score-box"><span>地雷</span><strong id="mine-count">10</strong></div>

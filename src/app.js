@@ -11,35 +11,42 @@ function gameCard(game) {
 
   return `
     <${wrapper} class="game-card ${available ? "" : "is-coming"}"${link}>
+      <div class="character-portrait portrait-${game.portrait}" role="img" aria-label="${game.character}，${game.role}"></div>
+      <div class="card-gradient" aria-hidden="true"></div>
+      <div class="card-content">
       <div class="card-top">
-        <span class="game-icon" aria-hidden="true">${game.icon}</span>
+        <span class="character-role">${game.role}</span>
         <span class="status">${available ? "可以玩了" : "準備中"}</span>
       </div>
       <h3>${game.title}</h3>
+      <p class="game-subtitle">${game.subtitle}</p>
+      <p class="character-name">${game.character}</p>
       <p>${game.description}</p>
       <div class="card-meta">
         <span class="meta-pill">${game.category}</span>
         <span class="meta-pill">${game.duration}</span>
       </div>
       ${available ? '<span class="play-link">開始遊戲 <span aria-hidden="true">→</span></span>' : ""}
+      </div>
     </${wrapper}>
   `;
 }
 
 function renderHome() {
-  document.title = "Sayuri's Mini Games";
+  document.title = "Étoile Arcade｜Sayuri's Mini Games";
   app.innerHTML = `
     <section class="hero">
       <div>
-        <p class="eyebrow"><span aria-hidden="true">✦</span> Tiny breaks, better days</p>
-        <h1>忙裡偷閒，<br /><span>玩一局吧。</span></h1>
+        <p class="eyebrow"><span aria-hidden="true">✦</span> Bienvenue à l'Étoile Arcade</p>
+        <h1>踏入星夜，<br /><span>與命運遊戲。</span></h1>
         <p class="hero-copy">
-          為工作空檔準備的輕量小遊戲。不必登入、不必等待，
-          選一款喜歡的，讓腦袋暫時換個頻道。
+          當現實需要暫停，六位來自不同幻想國度的主人公正等待你的邀請。
+          不必登入、不必等待，選擇一段物語，享受短暫而華麗的逃離。
         </p>
+        <div class="hero-seal"><span>Original Character Arcade</span><b>EST. 2026</b></div>
       </div>
       <div class="hero-orbit" aria-hidden="true">
-        <span class="orbit-icon">🎮</span>
+        <span class="orbit-icon">♛</span>
         <span class="orbit-dot orbit-dot-one"></span>
         <span class="orbit-dot orbit-dot-two"></span>
       </div>
@@ -48,8 +55,9 @@ function renderHome() {
     <section aria-labelledby="games-title">
       <div class="section-heading">
         <div>
-          <h2 id="games-title">選一款遊戲</h2>
-          <p>短短幾分鐘，也能玩得盡興。</p>
+          <span class="section-kicker">CHOOSE YOUR STORY</span>
+          <h2 id="games-title">今夜，要與誰相遇？</h2>
+          <p>每一款遊戲，都是一位主人公的專屬物語。</p>
         </div>
       </div>
       <div class="game-grid">
