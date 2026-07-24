@@ -282,10 +282,6 @@ export function renderTetris(root) {
       if (color !== EMPTY) drawCell(boardContext, x, y, color, size);
     }));
     if (!active) return;
-    const destination = ghostY();
-    active.cells.forEach(([x, y]) => {
-      if (destination + y >= 0) drawCell(boardContext, active.x + x, destination + y, active.color, size, 0.2);
-    });
     active.cells.forEach(([x, y]) => {
       if (active.y + y >= 0) drawCell(boardContext, active.x + x, active.y + y, active.color, size);
     });
