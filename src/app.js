@@ -2,6 +2,7 @@ import { games } from "./games.js";
 import { renderMinesweeper } from "./minesweeper.js";
 import { renderReversi } from "./reversi.js";
 import { renderTetris } from "./tetris.js";
+import { renderSnake } from "./snake.js";
 
 const app = document.querySelector("#app");
 document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -59,7 +60,7 @@ function renderHome() {
           <a class="cosmic-planet planet-a portrait-0" href="#/games/minesweeper" aria-label="前往奧蕾莉亞的踩地雷篇章"></a>
         </div>
         <div class="cosmic-orbit orbit-two">
-          <span class="cosmic-planet planet-b portrait-1" title="西爾維斯・諾克斯"></span>
+          <a class="cosmic-planet planet-b portrait-1" href="#/games/snake" aria-label="前往西爾維斯的貪吃蛇篇章"></a>
         </div>
         <div class="cosmic-orbit orbit-three">
           <span class="cosmic-planet planet-c portrait-2" title="諾瓦・布蘭雪"></span>
@@ -103,6 +104,14 @@ function route() {
     document.body.dataset.scene = "reversi";
     document.title = "黑白棋 AI｜Sayuri's Mini Games";
     renderReversi(app);
+    app.focus({ preventScroll: true });
+    return;
+  }
+
+  if (path === "/games/snake") {
+    document.body.dataset.scene = "snake";
+    document.title = "貪吃蛇｜Sayuri's Mini Games";
+    renderSnake(app);
     app.focus({ preventScroll: true });
     return;
   }

@@ -23,7 +23,7 @@ export const games = [
     description: "穿梭月夜迴廊，替神祕的吸血鬼伯爵收集失落靈魂。",
     category: "街機",
     duration: "2–5 分鐘",
-    status: "coming-soon",
+    status: "available",
   },
   {
     id: "reversi",
