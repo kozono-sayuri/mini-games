@@ -39,6 +39,41 @@ body {
     linear-gradient(145deg, #100b19 0%, #1b1026 52%, #140d1c 100%);
 }
 
+body::before {
+  position: fixed;
+  z-index: -3;
+  inset: 0;
+  content: "";
+  opacity: 0;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+}
+
+body[data-scene="minesweeper"]::before {
+  opacity: 0.78;
+  background-image:
+    linear-gradient(90deg, rgba(13, 7, 19, 0.42), rgba(18, 8, 21, 0.66) 50%, rgba(13, 7, 19, 0.42)),
+    url("./assets/minesweeper-palace-v2.png");
+}
+
+body[data-scene="minesweeper"] {
+  background: #130913;
+}
+
+body[data-scene="minesweeper"] .ambient {
+  opacity: 0.08;
+}
+
+body[data-scene="minesweeper"] .site-header {
+  padding-inline: 22px;
+  border: 1px solid rgba(232, 197, 130, 0.22);
+  border-top: 0;
+  background: rgba(20, 9, 22, 0.76);
+  backdrop-filter: blur(16px);
+}
+
 button,
 a {
   font: inherit;
@@ -197,68 +232,183 @@ a {
   line-height: 1.8;
 }
 
-.hero-orbit {
+.hero-cosmos {
   position: relative;
-  display: grid;
-  width: min(300px, 100%);
+  width: min(430px, 100%);
   aspect-ratio: 1;
-  place-items: center;
   justify-self: end;
-  border: 1px solid rgba(232, 197, 130, 0.28);
   border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(226, 125, 172, 0.14), transparent 48%),
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.12) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 30%, rgba(255, 255, 255, 0.1) 0 1px, transparent 2px);
+  filter: drop-shadow(0 24px 60px rgba(5, 2, 12, 0.35));
+  isolation: isolate;
 }
 
-.hero-orbit::before,
-.hero-orbit::after {
+.hero-cosmos::before {
   position: absolute;
+  z-index: -1;
+  inset: 5%;
   content: "";
-  border: 1px solid rgba(255, 131, 195, 0.18);
   border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 31px,
+    rgba(232, 197, 130, 0.055) 32px 33px
+  );
 }
 
-.hero-orbit::before {
-  inset: 15%;
-}
-
-.hero-orbit::after {
-  inset: 31%;
-}
-
-.orbit-icon {
-  display: grid;
-  width: 88px;
-  height: 88px;
-  place-items: center;
-  font-size: 2.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 26px;
-  color: var(--gold);
-  background: linear-gradient(145deg, rgba(108, 29, 62, 0.82), rgba(69, 43, 90, 0.76));
-  box-shadow: var(--shadow);
-  transform: rotate(-6deg);
-}
-
-.orbit-dot {
+.cosmic-core {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 94px;
+  height: 94px;
+  place-items: center;
+  color: var(--gold);
+  border: 1px solid rgba(247, 218, 162, 0.55);
   border-radius: 50%;
-  background: var(--pink);
-  box-shadow: 0 0 24px var(--pink);
+  color: var(--gold);
+  background:
+    radial-gradient(circle at 35% 30%, #f4d99f, #a14370 36%, #321632 72%);
+  box-shadow:
+    0 0 34px rgba(232, 197, 130, 0.36),
+    0 0 85px rgba(217, 88, 153, 0.28);
+  transform: translate(-50%, -50%);
 }
 
-.orbit-dot-one {
-  top: 15%;
-  right: 13%;
+.cosmic-core span {
+  font-size: 2.1rem;
+  line-height: 1;
 }
 
-.orbit-dot-two {
-  bottom: 10%;
-  left: 24%;
-  width: 8px;
-  height: 8px;
-  background: var(--mint);
-  box-shadow: 0 0 20px var(--mint);
+.cosmic-core small {
+  margin-top: -20px;
+  color: #fff2d6;
+  font-family: Georgia, serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+}
+
+.cosmic-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(232, 197, 130, 0.16);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: cosmic-spin var(--orbit-speed) linear infinite;
+}
+
+.orbit-one {
+  width: 37%;
+  height: 37%;
+  --orbit-speed: 12s;
+}
+
+.orbit-two {
+  width: 55%;
+  height: 55%;
+  --orbit-speed: 18s;
+  animation-direction: reverse;
+}
+
+.orbit-three {
+  width: 74%;
+  height: 74%;
+  --orbit-speed: 26s;
+}
+
+.orbit-four {
+  width: 94%;
+  height: 94%;
+  --orbit-speed: 38s;
+  animation-direction: reverse;
+}
+
+.cosmic-planet {
+  position: absolute;
+  display: block;
+  width: var(--planet-size, 36px);
+  height: var(--planet-size, 36px);
+  overflow: hidden;
+  border: 2px solid rgba(255, 240, 210, 0.75);
+  border-radius: 50%;
+  background-image: url("./assets/character-roster.png");
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.035),
+    0 0 20px rgba(229, 128, 176, 0.36);
+  animation: counter-spin var(--orbit-speed) linear infinite reverse;
+}
+
+.orbit-two .cosmic-planet,
+.orbit-four .cosmic-planet {
+  animation-direction: normal;
+}
+
+.planet-a {
+  top: -17px;
+  left: calc(50% - 17px);
+  --planet-size: 44px;
+}
+
+.planet-b {
+  top: 46%;
+  right: -19px;
+  --planet-size: 38px;
+}
+
+.planet-c {
+  bottom: 3%;
+  left: 12%;
+  --planet-size: 48px;
+}
+
+.planet-d {
+  top: 8%;
+  right: 10%;
+  --planet-size: 31px;
+}
+
+.planet-e {
+  top: 17%;
+  left: 3%;
+  --planet-size: 39px;
+}
+
+.planet-f {
+  right: 12%;
+  bottom: 3%;
+  --planet-size: 54px;
+}
+
+.cosmic-star {
+  position: absolute;
+  color: #f4dba8;
+  text-shadow: 0 0 12px currentColor;
+  animation: twinkle 2.4s ease-in-out infinite alternate;
+}
+
+.star-one { top: 5%; left: 28%; }
+.star-two { top: 34%; right: 3%; font-size: 1.8rem; animation-delay: -1s; }
+.star-three { bottom: 6%; left: 40%; color: #e993bb; animation-delay: -1.7s; }
+
+@keyframes cosmic-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes counter-spin {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.35; transform: scale(0.75); }
+  to { opacity: 1; transform: scale(1.15); }
 }
 
 .section-heading {
@@ -486,7 +636,7 @@ a {
   padding: clamp(20px, 4vw, 42px);
   border: 1px solid var(--line);
   border-radius: 8px 32px 8px 32px;
-  background: var(--surface);
+  background: rgba(25, 13, 30, 0.88);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
 }
@@ -682,7 +832,8 @@ a {
   border: 1px solid var(--line);
   border-radius: 20px;
   line-height: 1.75;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(25, 13, 30, 0.82);
+  backdrop-filter: blur(16px);
 }
 
 .rules h2 {
@@ -709,7 +860,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .hero-orbit {
+  .hero-cosmos {
     display: none;
   }
 
@@ -789,5 +940,11 @@ a {
   * {
     scroll-behavior: auto !important;
     transition: none !important;
+  }
+
+  .cosmic-orbit,
+  .cosmic-planet,
+  .cosmic-star {
+    animation-play-state: paused !important;
   }
 }

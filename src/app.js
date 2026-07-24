@@ -10,7 +10,7 @@ function gameCard(game) {
   const link = available ? ` href="#/games/${game.id}"` : "";
 
   return `
-    <${wrapper} class="game-card ${available ? "" : "is-coming"}"${link}>
+    <${wrapper} id="game-${game.id}" class="game-card ${available ? "" : "is-coming"}"${link}>
       <div class="character-portrait portrait-${game.portrait}" role="img" aria-label="${game.character}，${game.role}"></div>
       <div class="card-gradient" aria-hidden="true"></div>
       <div class="card-content">
@@ -45,10 +45,28 @@ function renderHome() {
         </p>
         <div class="hero-seal"><span>Original Character Arcade</span><b>EST. 2026</b></div>
       </div>
-      <div class="hero-orbit" aria-hidden="true">
-        <span class="orbit-icon">♛</span>
-        <span class="orbit-dot orbit-dot-one"></span>
-        <span class="orbit-dot orbit-dot-two"></span>
+      <div class="hero-cosmos" aria-label="六位主人公的幻想星系">
+        <span class="cosmic-star star-one" aria-hidden="true">✦</span>
+        <span class="cosmic-star star-two" aria-hidden="true">·</span>
+        <span class="cosmic-star star-three" aria-hidden="true">✧</span>
+        <div class="cosmic-core" aria-label="Étoile Arcade 核心">
+          <span>♛</span>
+          <small>ÉTOILE</small>
+        </div>
+        <div class="cosmic-orbit orbit-one">
+          <a class="cosmic-planet planet-a portrait-0" href="#/games/minesweeper" aria-label="前往奧蕾莉亞的踩地雷篇章"></a>
+        </div>
+        <div class="cosmic-orbit orbit-two">
+          <span class="cosmic-planet planet-b portrait-1" title="西爾維斯・諾克斯"></span>
+        </div>
+        <div class="cosmic-orbit orbit-three">
+          <span class="cosmic-planet planet-c portrait-2" title="諾瓦・布蘭雪"></span>
+          <span class="cosmic-planet planet-d portrait-3" title="路西安・德・凡爾賽"></span>
+        </div>
+        <div class="cosmic-orbit orbit-four">
+          <span class="cosmic-planet planet-e portrait-4" title="薇奧拉・齒輪心"></span>
+          <span class="cosmic-planet planet-f portrait-5" title="沈月衡"></span>
+        </div>
       </div>
     </section>
 
@@ -72,12 +90,14 @@ function route() {
   const path = window.location.hash.slice(1) || "/";
 
   if (path === "/games/minesweeper") {
+    document.body.dataset.scene = "minesweeper";
     document.title = "踩地雷｜Sayuri's Mini Games";
     renderMinesweeper(app);
     app.focus({ preventScroll: true });
     return;
   }
 
+  delete document.body.dataset.scene;
   renderHome();
 }
 
